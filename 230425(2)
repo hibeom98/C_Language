@@ -1,0 +1,208 @@
+// 관계연산자
+#include<stdio.h>
+int main() {
+int a = 0, b = 0;
+printf("두 개의 정수를 입력하시오\n");
+scanf_s("%d %d", &a, &b);
+printf("%d>%d:%d\n", a, b, a > b);
+printf("%d<%d:%d\n", a, b, a < b);
+printf("%d>=%d:%d\n", a, b, a >= b);
+printf("%d<=%d:%d\n", a, b, a <= b);
+printf("%d==%d:%d\n", a, b, a == b);
+printf("%d!=%d:%d\n", a, b, a != b);
+return 0;
+}
+
+
+
+#include<stdio.h>
+int main()
+{
+	int month;
+	printf("몇 월?\n");
+	scanf_s("%d", &month);
+	if (month >= 6 && month <= 8)
+
+{
+		printf("성수기 요금 적용 \n");
+}
+  if (month < 6 || month > 8)
+	printf("비수기 요금 적용\n");
+
+ //if(!(month >= 6 && month <= 8)) 위의 식과 같다.
+
+	return 0;
+
+}
+
+
+
+#include<stdio.h>
+int main()
+{
+	int n1=15; // 00000000 00000000 00000000 00001111(32비트)
+	int n2=20; // 00000000 00000000 00000000 00010100
+	int result = n1 & n2;
+	printf("n1 = %d\n", n1);
+	printf("n2 = %d\n", n2);
+	printf("result = %d\n", result);
+
+	return 0;
+
+
+}
+
+#include<stdio.h>
+int main()
+{
+	int n1 = 15; // 00000000 00000000 00000000 00001111(32비트)
+	int n2 = 20; // 00000000 00000000 00000000 00010100
+	int result = n1 | n2;
+	printf("n1 = %d\n", n1);
+	printf("n2 = %d\n", n2);
+	printf("result = %d\n", result);
+
+	return 0;
+}
+
+
+#include<stdio.h>
+int main()
+{
+	int n1 = 15; // 00000000 00000000 00000000 00001111(32비트)
+	int n2 = 20; // 00000000 00000000 00000000 00010100
+	int result = n1 ^ n2;
+	printf("n1 = %d\n", n1);
+	printf("n2 = %d\n", n2);
+	printf("result = %d\n", result);
+
+	return 0;
+
+
+}
+
+#include<stdio.h>
+int main()
+{
+	int n1 = -1;	// 11111111 11111111 11111111 11111111(32비트)
+	int n2 = 0;		// 00000000 00000000 00000000 00000000
+	int result1 = ~n1;
+	int result2 = ~n2;
+	printf("~n1 = %d\n", result1);
+	printf("~n2 = %d\n", result2);
+	
+
+	return 0;
+}
+
+
+
+#include<stdio.h>
+int main()
+{
+	int n = 1;          // 00000000 00000000 00000000 00000001(32비트)
+	int r1 = n << 1;    // 00000000 00000000 00000000 00000010
+	int r2 = n << 2;    // 00000000 00000000 00000000 00000100
+	int r3 = n << 3;    // 00000000 00000000 00000000 00001000
+	int r4 = n << 4;    // 00000000 00000000 00000000 00010000   
+
+	printf("결과1=%d\n", r1);
+	printf("결과2=%d\n", r2);
+	printf("결과3=%d\n", r3);
+	printf("결과4=%d\n", r4);
+	
+	return 0;
+
+}
+
+
+#include<stdio.h>
+int main()
+{
+	int n = 16;          // 00000000 00000000 00000000 00010000(32비트)
+	int r1 = n >> 1;     // 00000000 00000000 00000000 00001000
+	int r2 = n >> 2;     // 00000000 00000000 00000000 00000100
+	int r3 = n >> 3;     // 00000000 00000000 00000000 00000010
+	int r4 = n >> 4;     // 00000000 00000000 00000000 00000001   
+
+	printf("결과1=%d\n", r1);
+	printf("결과2=%d\n", r2);
+	printf("결과3=%d\n", r3);
+	printf("결과4=%d\n", r4);
+
+	return 0;
+
+
+}
+
+
+
+
+//오버플로우(overFLOW)
+#include<stdio.h>
+int main() {
+	char a;
+	a = -128;
+	printf("%d\n", a);
+	a = -129;
+	printf("%d\n", a);
+
+	return 0;
+
+}
+
+//오버플로우(overFLOW)
+#include<stdio.h>
+int main() {
+	unsigned char a;
+	a = 255;
+	printf("%d\n", a);
+	a = 256;
+	printf("%d\n", a);
+
+	return 0;
+
+}
+
+// 비트마스트
+// 비트 논리연사에 이용 특정 비트값을 조작하기 위한 목적
+// AND, OR 등의 연산자를 이용하여 비트를 조작
+// 메모리를 적게 사용하기 위해
+// 프로그램 더욱 빠르게 동작
+// 소스코드가 직관적이다
+
+
+#include<stdio.h>
+int main()
+{
+	unsigned short data = 0x5678; // 0101 0110 0111 1000
+	unsigned short msk1 = 0xf000; // 1111 0000 0000 0000
+	unsigned short msk2 = 0x0f00; // 0000 1111 0000 0000
+	unsigned short msk3 = 0x00f0; // 0000 0000 1111 0000
+	unsigned short msk4 = 0x000f; // 0000 0000 0000 1111
+	printf("결과 1 = %#.4x \n", data & msk1);
+	printf("결과 2 = %#.4x \n", data & msk2);
+	printf("결과 3 = %#.4x \n", data & msk3);
+	printf("결과 4 = %#.4x \n", data & msk4);
+	return 0;
+
+
+}                               // and  연산이란 비트열의 특정 부분을 뽑아낼 수 있다.
+
+#include<stdio.h>
+int main()
+{
+	unsigned short data = 0x0000; // 0000 0000 0000 0000
+	unsigned short msk1 = 0xf000; // 1111 0000 0000 0000
+	unsigned short msk2 = 0x0f00; // 0000 1111 0000 0000
+	unsigned short msk3 = 0x00f0; // 0000 0000 1111 0000
+	unsigned short msk4 = 0x000f; // 0000 0000 0000 1111
+	printf("결과 1 = %#.4x \n", data | msk1);
+	printf("결과 2 = %#.4x \n", data | msk2);
+	printf("결과 3 = %#.4x \n", data | msk3);
+	printf("결과 4 = %#.4x \n", data | msk4);
+	return 0;
+}                             // or연산도 동일하게 특정 부분만을 계산하여 식에 표시한다.
+                              // & 연산은 특정 비트를 0으로
+                              // | 연산은 특정 비트를 1로
+                              // ^ 연산은 특정 비트를 반전시킨다.
