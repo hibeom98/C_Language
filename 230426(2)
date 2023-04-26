@@ -1,0 +1,129 @@
+// Function(함수)
+// 함수란? : 하나의 특별한 목적의 작업을 수행하기 위해 
+//          독립적으로 설계된 프로그램 집합
+
+// C언어에서 크게 표준함수 , 사용자정의함수
+// 함수사용 이유 
+// 1. 반복적인 프로그램 --> 특정한 작업 반복을 피하기 위함
+// 2. 함수로 작성 ---> 모듈화에 좋다 ---> 가독성이 좋아진다 --> 유지보수가 좋아진다.
+// 3. 일반적으로 하나의 기능을 하나의 함수로 작성한다.
+
+//int sum(int x, y)		// X,Y는 매개변수 목록
+//{
+//	/*함수 본체*/
+//}
+
+
+// 함수의 원형 선언
+
+int print_hello(); // 함수의 원형을 선언
+
+int main()
+{
+	printf("함수 불러오기\n");
+	print_hello();
+
+	printf("함수를 또 .... 불러봅니다\n");
+	print_hello();
+	return 0;
+
+
+}
+
+int print_hello()
+{
+	printf("Hello World \n");
+	return 0;
+}
+
+void f1(void)
+{
+
+}
+void play_video()
+{
+
+}
+// 식별자 생성 규칙
+// 일관된 명명 규칙
+// 같은이름 함수를 존재 하지 말것
+
+
+void play_video(void) // 매개변수가 없는 함수
+{
+	printf("반환없음");
+}
+
+
+// 매개변수가 없는 코드
+int add(int x, int y)
+{
+	return x+y;
+}
+int main()
+{
+
+	int a, b, sum;
+	a = 3;
+	b = 5;
+	sum = add(a, b);
+	printf("a와b의 합은 : %d\n",sum);
+	printf("a와10의 합은 : %d\n",add(a,10));
+	return 0;
+}
+
+// 함수의 작성은 함수의 리턴값의 자료형, 함수의 인자, 함수의 내용이 필요하다.
+// 함수의 인자는 반드시 갯수와 자료형에 맞게 넣어서 호출
+// 함수 이름 중복 금지
+// 함수명 --> 식별자 금지 동일
+// 함수의 리턴값이 없는 void형 함수가 아니면 반드시 return이 존재 해야 함
+
+
+
+// 매크로 상수를 이용한 함수 선언
+#define add(x,y)(x + y) // 매크로 상수 
+int main()
+{
+
+	int a, b, sum;
+	a = 3;
+	b = 5;
+	sum = add(a, b);                   // add(3+5)
+	printf("a와b의 합은 : %d\n", sum);
+	printf("a와10의 합은 : %d\n", add(a, 10));
+	return 0;
+}
+
+// 변수의 유효범위
+// 지역변수(Local variable)
+// 전역변수(Global variable)
+// 정적변수(Static variable)
+// 레지스터 변수(Resister variable)
+
+// 지역변수
+// "블록" 내에서 선언된 변수
+// 변수가 선언된 "블록" 내에서만 유효, 블록이 종료되면 메모리에서 사라짐
+// 지역변수는 메모리상의 스택영역에 저장되며, 초기화 하지 않으면 Trash 값으로 초기화 됨
+
+
+void local(void); // 함수 원형 선언
+int main()
+{
+	int i = 5;
+	int var = 10;
+	printf("main 함수 내의 지역변수 var의 값은 : %d\n", var);
+	if (i < 10)
+	{
+		local();
+		int var = 30;
+		printf("if문 내의 지역변수 var의 값:%d\n", var);
+	}
+	printf("현재 지역변수 var의 값: %d\n", var);
+	return 0;
+}
+void local(void)
+{
+	int var = 20;
+	printf("로컬 함수내의 지역변수 Var 값 : %d\n", var);
+
+}
