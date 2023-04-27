@@ -115,4 +115,237 @@ int main() //배열의 초기화는 단 한번 처음 선언 시 한번에 모�
 }
 
 
+//배열의 크기보기
+int main() {
+	int arr[5] = { 2,3,4,5,6 };
+	int brr[] = { 2 ,4 ,8 };
+	printf("int형 크기 : %d byte\n", sizeof(int));
+	printf("배열 arr의 크기 : %d byte\n", sizeof(arr));
+	printf("배열 brr형의  크기 : %d byte\n", sizeof(brr));
+	return 0;
+}
+
+
+// 배열의 탐색
+
+int main() {
+	int data[] = { 78,52,63,58,77,52,88};
+	int size;
+	int key, i;
+	size = sizeof(data) / sizeof(data[0]);
+	printf("arr = ");
+	for (i = 0; i < size; i++)
+	{
+		printf("%d    ", data[i]);
+	}
+	printf("    \n");
+	printf("찾을 값은? : ");
+	scanf("%d", &key);
+
+	for (i = 0; i < size; i++)
+	{
+		if (data[i] == key)
+		{
+			printf("찾은 원소의 인덱스 : %d\n", i);
+		}
+	}return 0;
+}
+
+
+// 배열의 탐색
+
+int main() {
+	int data[] = { 78,52,63,58,77,52,88 };
+	int size;
+	int key, i, found = 0;
+	size = sizeof(data) / sizeof(data[0]);
+	printf("arr = ");
+	for (i = 0; i < size; i++)
+	{
+		printf("%d    ", data[i]);
+	}
+	printf("    \n");
+	printf("찾을 값은? : ");
+	scanf("%d", &key);
+
+	for (i = 0; i < size; i++)
+	{
+		if (data[i] == key)
+		{
+			printf("찾은 원소의 인덱스 : %d\n", i);
+			found = 1;
+		}
+		
+	}
+
+	if (!found)
+	{
+		printf("찾을 원소가 없습니다\n");
+	}
+	return 0;
+}
+
+// 배열내의 원하는 글자 찾기
+#define MAX 30
+
+int main() {
+	char sentence[MAX] = { 0 };
+	char key;
+	int i;
+	printf("30자 이하의 문장을 입력하시오.");
+	for (i = 0; i < MAX; i++)
+	{
+		scanf("%c", &sentence[i]);
+		if (sentence[i] == '\n')  //엔터키가 들어온다면
+		{
+			sentence[i] = '\0';
+			break;
+		}
+
+	}
+	printf("찾을 문자를 입력하시오 :");
+	scanf("%c", &key);
+	for (i = 0; i < MAX; i++)
+	{
+		if (sentence[i]==key)
+		{
+			printf("%d번째 칸에서 찾았습니다\n", i + 1);
+		}
+
+	}
+
+	return 0;
+
+
+//배열을 이용해서 진법 변환 10진수를 2진수로 바꾸기
+
+int main() {
+	int decimal;
+	int binary[20] = { 0, };
+	int position = 0;
+	printf("2진수로 변환할 10진수를 입력하세요");
+	scanf("%d", &decimal);
+	while (1)
+	{
+		binary[position] = decimal % 2; // 나머지를 배열에 저장하기
+		decimal = decimal / 2;			// 몫을 저장
+		position++;
+
+		if(decimal == 0)
+		{
+			break;
+		}
+	}
+	// 배열을 역순으로 출력
+	for (int i = position - 1; i >= 0 ; i--)
+	{
+		printf("%d", binary[i]);
+	}
+	printf("\n");
+	return 0;
+}
+
+// 배열 구조
+int main(){
+	int arr_2[3][3] = {{1,4,6},{8,5,2},{7,9,3}};
+	printf(" 1행 1열 : %d | ", arr_2[0][0]);
+	printf(" 1행 2열 : %d | ", arr_2[0][1]);
+	printf(" 1행 3열 : %d | \n", arr_2[0][2]);
+	printf(" 2행 1열 : %d | ", arr_2[0][0]);
+	printf(" 2행 2열 : %d | ", arr_2[0][1]);
+	printf(" 2행 3열 : %d | \n", arr_2[0][2]);
+	printf(" 3행 1열 : %d | ", arr_2[0][0]);
+	printf(" 3행 2열 : %d | ", arr_2[0][1]);
+	printf(" 3행 3열 : %d | \n", arr_2[0][2]);
+	return 0;
+	}
+
+
+// 위의 코드를 For문 중첩을 이용하여 동일한 출력을 나오게 하는 코드
+
+int main(){
+	int arr_2[3][3] = { {1,4,6},{8,5,2},{7,9,3}};
+	int i, j;
+	for ( i = 0; i < 3; i++)			// 행
+	{	
+		for (j = 0; j < 3; j++)			// 열
+		{			
+			printf("%d행 %d열 : %d", i, j, arr_2[i][j]);
+			if (j < 3)printf("|");
+			if (j == 2)printf("\n");
+		}
+	}
+	return 0;
+	}
+
+
+// 2차원 배열
+
+int main() {
+	int arr_2[3][3] = { {1,4,6},{8,5,2},{7,9,3} };
+	int i, j;
+	for (i = 0; i < 3; i++)
+	{
+		for(j = 0; j < 3; j++)
+		{	
+			printf("%d행 %d열 : %d | 주소 : %p\n", i, j, arr_2[i][j],&arr_2[i][j]);
+		}
+		
+	}
+	return 0;
+}
+
+
+//2차원 배열에서 선언할때 행의 수 비워둘 수 있다.(단, 열은 안됨)
+
+int main() {
+	int arr_2[2][3] = { {1,4},{8,5,2} };
+	int i, j;
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 3; j++)
+		{
+			printf("%d행 %d열 : %d\n", i, j, arr_2[i][j]);
+		}
+
+	}
+	return 0;
+}
+
+
+// 행과 열의 합 구하기
+#define ROW 3
+#define COL 3
+int main() {
+	int square[ROW + 1][COL + 1] = { 0 };
+	int i, j;
+	printf("한줄에 3개의 정수를 3번 입력하세요\n");
+	for ( i = 0; i < ROW; i++)	// 입력
+	{
+		for ( j = 0; j < COL ; j++)
+		{	
+			scanf("%d", &square[i][j]);
+		}
+		for ( j = 0; j < COL; j++)
+		{
+			square[i][COL] += square[i][j];
+			if (i < ROW)
+			{
+				square[ROW][j] +=square[i][j];
+			}
+		}
+		8
+	}
+	for (i = 0; i < ROW + 1; i++) // 출력
+	{
+		for (j = 0; j < COL+1; j++)
+		{
+			printf("%5d", square[i][j]);
+		}
+		printf("\n");
+	}
+	return 0;
+}
+
+
 
