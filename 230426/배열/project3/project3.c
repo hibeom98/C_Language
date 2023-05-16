@@ -1,0 +1,537 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+// 배열(array)
+// 배열은 같은 타입의 변수들로 이루어진 유한 집합
+// 배열을 구성하는 각각의 값을 배열 요소라 한다.
+// 배열에서 위치를 가르키는 숫자는 인덱스 라고 한다.
+// 항상 인덱스는 0에서 시작하며 0을 포함안 양의 정수만을 가질 수 있다.
+// 그리고 배열은 항상 연속된 메모리에 할당 됩니다.
+
+// int arr[3]; --> 배열 선언 방법, 배열의 크기는 0보다 커야 한다.
+
+// int arr[0]
+
+//int size = 100;
+//double data[size];// 배열은 변수 지정 불가
+
+// #define MAX 5 // 하지만 메크로 상수 지정은 가능하다
+// int arr[MAX]; 
+
+/* 배열의 크기 구하기 */
+
+//int main() {
+//
+//	int arr[5];				// 크기가 5인 배열 선언
+//	int byte_size = 0;		// 배열의 바이트 크기를 저장할 변수
+//	int size = 0;			// 배열의 크기를 저장할 변수
+//	int i;
+//
+//	byte_size = sizeof(arr);				// 배열의 바이트 크기
+//	printf("배열의 바이트 크기 : %d \n\n", byte_size);
+//
+//	size = sizeof(arr) / sizeof(arr[0]);	// 배열의 크기(원소의 개수)
+//	printf("배열의 크기 : %d\n", size);
+//
+//	for (i = 0; i < size; i++) {
+//		arr[i] = 0;
+//	}
+//
+//	return 0;
+//}
+//
+
+
+/* 메크로 상수로 이용한 배열 */
+
+//#define ARR_SIZE 5						// 배열의 크기로 매크로 상수 정의
+//
+//int main() {
+//
+//	int arr[ARR_SIZE];					// 배열의 크기를 매크로 상수로 지정	
+//	int i;
+//
+//	for (i = 0; i < ARR_SIZE; i++) {	// 배열의 크기를 ARR_SIZE 이용
+//		arr[i] = 0;
+//	}
+//	printf("arr배열의 원소 : ");
+//
+//	for (i = 0; i < ARR_SIZE; i++) {	// 배열의 크기를 가변적으로 할수 있다
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//
+//	return 0;
+//}
+
+/* 배열의 기초 1 */
+//int main() {
+//	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+//	printf("arr의 3번째 요소가 뭐냐/ %d\n", arr[2]);
+//	return 0;
+//}
+
+
+/* 배열의 기초 2 */
+//int main() {
+//	int arr[10];
+//	
+//	arr[0] = 3;
+//	arr[1] = 5;
+//	arr[2] = 7;
+//
+//	printf("arr의 첫번째 요소 ? : %d\n", arr[0]);
+//	printf("arr의 두번째 요소 ? : %d\n", arr[1]);
+//	printf("arr의 세번째 요소 ? : %d\n", arr[2]);
+//}
+
+
+/* 배열의 요소 */
+//int main() {
+//	int arr[10];				// 해당 구역만 변수를 지정하지 못한다.
+//	int i = 5;
+//	arr[i] = 3;
+//	arr[i+1] = 5;
+//	arr[i+3] = 7;
+//
+//	printf("arr의 여섯번째 요소 ? : %d\n", arr[i]);
+//	printf("arr의 일곱번째 요소 ? : %d\n", arr[i+1]);
+//	printf("arr의 아홉번째 요소 ? : %d\n", arr[8]);
+//
+//	return 0;
+//}
+
+
+/* 배열의 크기로 매크로 상수 정의 */
+//#define arr_size 5
+//int add(int a, int b) { return a + b; }		//배열의 크기로 매크로 상수 정의
+//
+//int main() {
+//	int arr[arr_size] = { 0 };
+//	int i;
+//	arr[0] = 5;
+//	arr[1] = arr[0] + 10;					//배열의 요소(원소)를 수식에 이용
+//	arr[2] = add(arr[0], arr[1]);			// 함수의 인자로 사용
+//	printf("정수를 2개 입력 하시오 : ");
+//	scanf("%d %d", &arr[3], &arr[4]);		// 배열의 원소로 입력
+//	for (i = 0; i < arr_size; i++)
+//	{
+//		printf("%d", arr[i]);
+//
+//	}
+//
+//	printf("\n");
+//	return 0;
+//
+//}
+
+
+/* 잘못된 인덱스를 사용하는 경우 */
+
+//#define ARR_SIZE 5
+//
+//int main() {
+//	int arr[ARR_SIZE] = { 10, 20, 30, 40, 50 };
+//	int i;
+//	printf("arr= ");
+//	for (i = 0; i < ARR_SIZE; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//
+//	printf("\n");
+//	printf("arr[5] = %d \n", arr[5]);
+//	return 0;
+//}
+
+
+/* 배열의 메모리 구조 */
+//int main() {
+//
+//	int i = 5;
+//	char c = 'A';
+//
+//	printf("변수 i 의 주소값 : %p\t변수 i 의 값 : %d\n", &i, i);
+//	printf("변수 c 의 주소값 : %p\t변수 c 의 값 : %c\n", &c, c);
+//
+//	return 0;
+//}
+
+/* 배열의 주소값 및 요소값 표현 */
+//int main() //배열의 초기화는 단 한번 처음 선언 시 한번에 모든 칸 초기화 가능
+//{
+//	int arr[4] = { 3,5,7,9 };
+//	arr[0] = 3;
+//	arr[1] = 5;
+//	arr[2] = 7;
+//	arr[3] = 9;
+//
+//	printf("arr 배열의 첫번째 요소 주소값 : %p\t 요소값: %d \n",&arr[0],arr[0]);
+//	printf("arr 배열의 첫번째 요소 주소값 : %p\t 요소값: %d \n",&arr[1],arr[1]);
+//	printf("arr 배열의 첫번째 요소 주소값 : %p\t 요소값: %d \n",&arr[2],arr[2]);
+//	printf("arr 배열의 첫번째 요소 주소값 : %p\t 요소값: %d \n",&arr[3],arr[3]);
+//
+//	return 0;
+//
+//
+//}
+
+/* 배열의 초기화(sizeof 연산자 사용) */
+
+//int main() {
+//	int arr[5] = { 2,3,4,5,6 };
+//	int brr[] = { 2 ,4 ,8 };
+//	printf("int형 크기 : %d byte\n", sizeof(int));
+//	printf("배열 arr의 크기 : %d byte\n", sizeof(arr));
+//	printf("배열 brr형의  크기 : %d byte\n", sizeof(brr));
+//	return 0;
+//}
+
+
+/* 5명 학생의 성적을 입력받아 전체 평균을 구한다 */
+
+//int main() {
+//
+//    int arr[5];		// 성적 저장 배열
+//    int i, sum = 0;
+//
+//    for (i = 0; i < 5; i++) {
+//        printf("%d번째 학생의 성적을 입력하세요 : ", i + 1);
+//        scanf("%d", &arr[i]);
+//    }
+//    for (i = 0; i < 5; i++) {
+//        sum = sum + arr[i];
+//    }
+//    printf("전체 학생의 합은 : %d \n", sum);
+//    printf("전체 학생의 평균은 : %d \n", sum / 5);
+//
+//    return 0;
+//}
+
+
+/* 성적을 입력받아 전체 평균을 내고 평균보다 점수가 낮다면 불합격 / 이상이면 합격 */
+
+//int main() {
+//
+//    int arr[5];
+//    int i, sum = 0, ave = 0;
+//
+//    for (i = 0; i < 5; i++) {
+//        printf("%d번째 학생의 성적은 ? : ", i + 1);
+//        scanf("%d", &arr[i]);
+//    }
+//    for (i = 0; i < 5; i++) {
+//        sum += arr[i];
+//    }
+//    ave = sum / 5;
+//
+//    printf("전체 학생의 평균은 : %d \n", ave);
+//
+//    for (i = 0; i < 5; i++) {
+//
+//        printf("학생 %d: ", i + 1);
+//
+//        if (arr[i] >= ave) {
+//            printf("합격 \n");
+//        }
+//        else {
+//            printf("불합격 \n");
+//        }
+//    }
+//    return 0;
+//}
+
+
+/* 배열의 탐색 */
+
+//int main() {
+//	int data[] = { 78,52,63,58,77,52,88};
+//	int size;
+//	int key, i;
+//	size = sizeof(data) / sizeof(data[0]);
+//	printf("arr = ");
+//	for (i = 0; i < size; i++)
+//	{
+//		printf("%d    ", data[i]);
+//	}
+//	printf("    \n");
+//	printf("찾을 값은? : ");
+//	scanf("%d", &key);
+//
+//	for (i = 0; i < size; i++)
+//	{
+//		if (data[i] == key)
+//		{
+//			printf("찾은 원소의 인덱스 : %d\n", i);
+//		}
+//	}return 0;
+//}
+
+
+/* 배열의 탐색 2 */
+//int main() {
+//
+//	int data[] = { 78,34,52,15,63,15,25 };
+//	int size;
+//	int key, i, found = 0;					// found 변수 추가 및 초기화
+//
+//	size = sizeof(data) / sizeof(data[0]);
+//	printf("arr = ");
+//	for (i = 0; i < size; i++) {
+//		printf("%d ", data[i]);
+//	}
+//	printf("\n");
+//
+//	printf("찾을 값(키) ? : ");
+//	scanf("%d", &key);
+//
+//	for (i = 0; i < size; i++) {
+//		if (data[i] == key) {		// 배열의 원소와 키 비교
+//			printf("찾은 원소의 인덱스 : %d \n", i);
+//			found = 1;				// found 변수를 1로 설정하여 찾았음을 표시
+//		}
+//	}
+//	if (!found) {		// 원소를 찾지 못했을 경우 메세지 출력
+//		printf("찾는 원소가 없습니다. \n");
+//	}
+//
+//	return 0;
+//}
+
+
+/* 문장을 입력받고 또다른 문자 하나를 입력받아서 입력받은 문자 한 개를 문장에서 찾아낸다.*/
+//#define MAX 30
+//
+//int main() {
+//
+//    char sentence[MAX] = { 0 };
+//    char key;
+//    int i;
+//
+//    printf("30자 이하의 문장을 입력하시오 : ");
+//
+//    for (i = 0; i < MAX; i++) {
+//
+//        scanf("%c", &sentence[i]);
+//
+//        if (sentence[i] == '\n') {
+//
+//            sentence[i] = '\0';
+//            break;
+//        }
+//    }
+//
+//    printf("찾을 문자를 입력하세요 : ");
+//    scanf("%c", &key);
+//
+//    for (i = 0; i < MAX; i++) {
+//
+//        if (sentence[i] == key) {
+//
+//            printf("%d번째 칸에서 찾았습니다. \n", i + 1);
+//        }
+//    }
+//
+//    return 0;
+//}
+
+
+
+/* 배열을 이용해서 진법 변환 10진수를 2진수로 바꾸기 */
+
+//int main()
+//{
+//    int decimal;
+//    int binary[20] = { 0, };
+//
+//    int position = 0;
+//
+//    printf("2진수로 변환할 10진수를 입력하세요 : ");
+//    scanf("%d", &decimal);
+//
+//    while (1)
+//    {
+//        binary[position] = decimal % 2;    // 2로 나누었을 때 나머지를 배열에 저장
+//        decimal = decimal / 2;             // 2로 나눈 몫을 저장
+//
+//        position++;    // 자릿수 변경
+//
+//        if (decimal == 0)    // 몫이 0이 되면 반복을 끝냄
+//            break;
+//    }
+//
+//     배열의 요소를 역순으로 출력
+//    for (int i = position - 1; i >= 0; i--)
+//    {
+//        printf("%d", binary[i]);
+//
+//    }
+//
+//    printf("\n");
+//
+//    return 0;
+//}
+
+/* 함수의 인자로 배열 전달하기 */
+//#define MAX 10
+//
+//void print_array(int arr[], int size);		// 함수 선언
+//
+//int main() {
+//
+//	int scores[] = { 99,98,97,96,66,55 };
+//	int size = sizeof(scores) / sizeof(scores[0]);
+//	int arr[MAX] = { 0 };
+//
+//	print_array(scores, size);		// 크기가 6인 int 배열 출력
+//	print_array(arr, MAX);			// 크기가 10인 int 배열 출력
+//
+//	return 0;
+//}
+//
+//void print_array(int arr[], int size)	// 배열의 원소를 출력하는 함수
+//{
+//	int i;
+//	for (i = 0; i < size; i++) {
+//		printf("%d ", arr[i]);
+//	}
+//	printf("\n");
+//}
+
+
+/* 2차원 배열 선언 */
+//// 행 과 열
+//
+//int arr_2[3][3] = {
+//	{1,2,3},
+//	{4,5,6},
+//	{7,8,9}
+//};
+
+
+/* 행과 열로 표현하기 */
+//int main() {
+//
+//    int arr_2[3][3] = {
+//    {1, 2, 3},
+//    {4, 5, 6},
+//    {7, 8, 9}
+//    };
+//
+//    return 0;
+//}
+
+/* 2차원 배열의 행 과 열 파악 */
+//int main(){
+//	int arr_2[3][3] = {{1,4,6},{8,5,2},{7,9,3}};
+//	printf(" 1행 1열 : %d | ", arr_2[0][0]);
+//	printf(" 1행 2열 : %d | ", arr_2[0][1]);
+//	printf(" 1행 3열 : %d | \n", arr_2[0][2]);
+//	printf(" 2행 1열 : %d | ", arr_2[0][0]);
+//	printf(" 2행 2열 : %d | ", arr_2[0][1]);
+//	printf(" 2행 3열 : %d | \n", arr_2[0][2]);
+//	printf(" 3행 1열 : %d | ", arr_2[0][0]);
+//	printf(" 3행 2열 : %d | ", arr_2[0][1]);
+//	printf(" 3행 3열 : %d | \n", arr_2[0][2]);
+//	return 0;
+//	}
+
+
+/* for 문으로 변경 */
+//int main() {
+//
+//    int arr_2[3][3] = { {1, 4, 6}, {8, 5, 2}, {7, 9, 3} };
+//    int i, j;
+//
+//    for (i = 0; i < 3; i++) {
+//        for (j = 0; j < 3; j++) {
+//            printf("%d행 %d열 : %d", i, j, arr_2[i][j]);
+//            if (j < 3) printf(" | ");
+//            if (j == 2) printf("\n");
+//        }
+//    }
+//
+//    return 0;
+//}
+
+
+
+/* 2차원 배열도 메모리 정류 구조는 1차원 배열과 같다 */
+//int main() {
+//	int arr_2[3][3] = { {1,4,6},{8,5,2},{7,9,3} };
+//	int i, j;
+//	for (i = 0; i < 3; i++)
+//	{
+//		for(j = 0; j < 3; j++)
+//		{	
+//			printf("%d행 %d열 : %d | 주소 : %p\n", i, j, arr_2[i][j],&arr_2[i][j]);
+//		}
+//		
+//	}
+//	return 0;
+//}
+
+
+
+
+/*2차원 배열에서 선언할때 행의 수 비워둘 수 있다.(단, 열은 안됨)*/
+//int main() {
+//
+//    int arr_2[][3] = { {1, 4}, {8, 5, 2} };
+//    int i, j;
+//
+//    for (i = 0; i < 2; i++) {
+//        for (j = 0; j < 3; j++) {
+//            printf("%d행  %d열 값 : %d \n", i, j, arr_2[i][j]);
+//        }
+//    }
+//    return 0;
+//}
+
+
+
+/* 배열의 크기 알아보기 */
+//int main() {
+//
+//	int arr_2[][3] = { {1, 4}, {8, 5, 2} };
+//
+//	printf("배열의 byte 크기 : %d \n", sizeof(arr_2));
+//	printf("초기화 되지 않은 arr_2[0][2] 의 값 : %d \n", arr_2[0][2]);
+//
+//	return 0;
+//}
+
+
+/* 행과 열의 합을 구하기 */
+//
+//#define ROW 3
+//#define COL 3
+//
+//int main() {
+//
+//    int square[ROW + 1][COL + 1] = { 0 };
+//    int i, j;
+//
+//    printf("한 줄에 3개의 정수를 3번 입력하시오 \n");
+//    for (i = 0; i < ROW; i++) {
+//        for (j = 0; j < COL; j++) {
+//            scanf("%d", &square[i][j]);
+//        }
+//    }
+//    for (i = 0; i < ROW; i++) {
+//        for (j = 0; j < COL; j++) {
+//            square[i][COL] += square[i][j];
+//            if (i < ROW) {
+//                square[ROW][j] += square[i][j];
+//            }
+//        }
+//        // square[ROW][COL] += square[i][j];
+//    }
+//    for (i = 0; i < ROW + 1; i++) {
+//        for (j = 0; j < COL + 1; j++) {
+//            printf("%5d", square[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    return 0;
+//}
